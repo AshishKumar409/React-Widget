@@ -10,6 +10,7 @@ const Accordion = ({ items }) => {
 
   const renderedItems = items.map((item, index) => {
     const active = activeIndex === index ? 'active' : '';
+    // https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=programming
     return (
       <React.Fragment key={item.title}>
         <div className={`title ${active}`}>
