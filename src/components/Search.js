@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const Search = () => {
   const [term, setTerm] = useState('');
+  const [result, setResult] = useState([]);
 
   console.log('runs on every render');
 
@@ -10,11 +11,13 @@ const Search = () => {
   //  console.log('runs only once')
   // },[])
 
+  console.log(result)
+
   // https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=programming
 
   useEffect(() => {
     const search = async () => {
-      const response = await axios.get('https://en.wikipedia.org/w/api.php', {
+      const {data} = await axios.get('https://en.wikipedia.org/w/api.php', {
         params:{
           action: 'query',
           list: 'search',
@@ -23,10 +26,12 @@ const Search = () => {
           srsearch: term,
         }
       });
-      console.log(response.data);
+      setResult(data.query.search)
     };
-
+   if(term){
     search();
+   }
+    
   }, [term]);
 
   // useEffect(()=>{
