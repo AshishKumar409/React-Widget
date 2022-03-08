@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Search = () => {
   const [term, setTerm] = useState('');
@@ -9,9 +10,23 @@ const Search = () => {
   //  console.log('runs only once')
   // },[])
 
+  // https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=programming
+
   useEffect(() => {
-    console.log('runs initially and every time the component is rerendered');
-  });
+    const search = async () => {
+      const response = await axios.get('https://en.wikipedia.org/w/api.php', {
+        action: 'query',
+        list: 'search',
+        format: 'json',
+        origin: '*',
+        proxy: true,
+        srsearch: term,
+      });
+      console.log(response);
+    };
+
+    search();
+  }, [term]);
 
   // useEffect(()=>{
   //   console.log('runs initially and every time the term is changed from its initial state')
