@@ -19,7 +19,6 @@ const Search = () => {
         list: 'search',
         format: 'json',
         origin: '*',
-        proxy: true,
         srsearch: term,
       });
       console.log(response);
