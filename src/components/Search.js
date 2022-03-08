@@ -15,13 +15,15 @@ const Search = () => {
   useEffect(() => {
     const search = async () => {
       const response = await axios.get('https://en.wikipedia.org/w/api.php', {
-        action: 'query',
-        list: 'search',
-        format: 'json',
-        origin: '*',
-        srsearch: term,
+        params:{
+          action: 'query',
+          list: 'search',
+          format: 'json',
+          origin: '*',
+          srsearch: term,
+        }
       });
-      console.log(response);
+      console.log(response.data);
     };
 
     search();
@@ -40,7 +42,7 @@ const Search = () => {
             type="text"
             value={term}
             onChange={(e) => {
-              console.log(e.target.value);
+              // console.log(e.target.value);
               setTerm(e.target.value);
             }}
             placeholder="Search..."
