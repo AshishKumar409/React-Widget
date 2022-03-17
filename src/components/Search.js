@@ -70,6 +70,9 @@ const Search = () => {
           />
           </div>
         </div>
+        <div className="ui celled list">
+          {renderedItems}
+        </div>
       </div>
      
     </React.Fragment>
