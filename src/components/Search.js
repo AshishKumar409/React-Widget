@@ -40,7 +40,24 @@ const Search = () => {
 
   return (
     <React.Fragment>
-      <div className="ui search">
+      <div>
+        <div className="ui form">
+          <div className="field">
+            <label>Enter your search term here</label>
+            <input
+            className="input"
+            type="text"
+            value={term}
+            onChange={(e) => {
+              // console.log(e.target.value);
+              setTerm(e.target.value);
+            }}
+            placeholder="Search..."
+          />
+          </div>
+        </div>
+      </div>
+      {/* <div className="ui search">
         <div className="ui icon input">
           <input
             className="prompt"
@@ -55,7 +72,7 @@ const Search = () => {
           <i className="search icon"></i>
         </div>
         <div className="results"></div>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 };
