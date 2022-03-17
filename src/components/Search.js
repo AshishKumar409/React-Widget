@@ -34,6 +34,20 @@ const Search = () => {
     
   }, [term]);
 
+  const renderedItems = result.map(item=>{
+    return (
+      <div className="item">
+        <div className="content">
+          <div className="header">
+            {item.title}
+          </div>
+          {item.snippet}
+        </div>
+      </div>
+
+    )
+  })
+
   // useEffect(()=>{
   //   console.log('runs initially and every time the term is changed from its initial state')
   //  },[term])
@@ -57,22 +71,7 @@ const Search = () => {
           </div>
         </div>
       </div>
-      {/* <div className="ui search">
-        <div className="ui icon input">
-          <input
-            className="prompt"
-            type="text"
-            value={term}
-            onChange={(e) => {
-              // console.log(e.target.value);
-              setTerm(e.target.value);
-            }}
-            placeholder="Search..."
-          />
-          <i className="search icon"></i>
-        </div>
-        <div className="results"></div>
-      </div> */}
+     
     </React.Fragment>
   );
 };
